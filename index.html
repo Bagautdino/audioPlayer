@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="style.css"/>
+    <title>Music Player</title>
+</head>
+
+<body>
+    <div class="main">
+        <canvas id="canvas" style="display: none"></canvas>
+        <div class="playing">
+            <audio controls style="display: none" id="audio"></audio>
+            <h5>playing now</h5>
+            <div class="title" id="musicName">null</div>
+            <div class="times">
+                <div class="current"></div>
+                <div class="duration"></div>
+            </div>
+            <div class="progress" id="progress">
+                <div class="progress_bar"></div>
+            </div>
+            <div class="buttons">
+                <div class="prev" onclick="prev()">
+                    <i class="fa fa-arrow-left"></i>
+                </div>
+                <div class="pause" onclick="play_pause(this)">
+                    <i class="fa fa-pause"></i>
+                </div>
+                <div class="next" onclick="next()">
+                    <i class="fa fa-arrow-left"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="playlist">
+            <h5>playlist</h5>
+            <div class="musics" id="musics"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

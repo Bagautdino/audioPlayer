@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main {
+    width: 100%;
+    height: 100vh;
+    background-color: #25292c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main .playing, .main .playlist {
+    width: 350px;
+    height: 9%;
+    margin: 0 20px;
+    border-radius: 30px;
+    border: .1px solid #2e353b;
+    box-shadow: 20px 20px 30px #181c1ff3;
+    background-image: linear-gradient(#232a2d, #181c1f);
+    padding: 20px 30px;
+}
+
+.main .playing {
+    width: 0;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    transition-duration: .5s;
+}
+
+.main .playing.select {
+    width: 350px;
+    padding: 20px 30px;
+    border: .1px solid #2e353b;
+}
+
+.main h5 {
+    text-align: center;
+    color: lightgray;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 100;
+}
+
+.main .playing .img {
+    width: 250px;
+    height: 250px;
+    margin: 30px auto;
+    border-radius: 100%; border: 2px solid #181c1f;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 10px 10px 30px #131718;
+}
+
+.main .playing .title {
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    font-weight: 400;
+    margin-top: 50px;
+}
+.main .playing .times {
+    display: flex;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.main .playing .times > div {
+    width: 50%;
+    color: white;
+}
+
+.main .playing .times > .duration {
+    text-align: right;
+}
+
+.main .playing .progress {
+    width: 100%;
+    height: 6px;
+    border-radius: 6px;
+    background-color: #0a0c0f;
+    border-bottom: 1px solid #33373a;
+    cursor: pointer;
+}
+
+.playing .progress .progress_bar {
+    height: 100%;
+    background-image: linear-gradient(to right, #b83d23, #d6bd2e);
+    border-radius: 6px;
+    position: relative;
+}
+
+.playing .progress .progress_bar::after {
+    content: '';
+    width: 5px;
+    background-color: #d6bd2e;
+    border-radius: 100%;
+    position: absolute;
+    top: -7px;
+    right: -3.5px;
+    border: 7px solid #24261d;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.playing .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.playing .buttons > div {
+    width: 60px;
+    height: 60px;
+    color: white;
+    border-radius: 100%;
+    margin: 30px 10px;
+    display: grid;
+    place-content: center;
+    outline: 2px solid #121618;
+    box-shadow: -6px -6px 15px #222a2c;
+    cursor: pointer;
+}
+
+.playing .buttons .prev, .playing .buttons .next {
+    background-image: linear-gradient(to right, #293133, #1d2124);
+    border: 2px solid #222a2c;
+}
+
+.playing .buttons .pause {
+    background-image: linear-gradient(to right, #a4341d, #d45d29);
+    border: 2px solid #d45d29;
+    transition-duration: .3s;
+}
+
+.playing .buttons .pause.stop {
+    border: 2px solid #a4341d;
+}
+
+.playlist .musics {
+    width: 100%;
+    margin-top: 50px;
+    color: white;
+}
+
+.playlist .musics .music {
+    width: 100%;
+    padding: 12px 0;
+    margin: 5px 0;
+    border-radius: 15px;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.playlist .musics .music.play {
+    background-image: linear-gradient(#111616, #181c1f);
+}
+.playlist .musics .music h3 {
+    font-size: 13px;
+    font-weight: 300;
+    width: 85%;
+    overflow-x: hidden;
+}
+
+.playlist .musics .music i {
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+    color: white;
+    border-radius: 100%;
+    display: grid;
+    place-content: center;
+    outline: 2px solid #121618;
+    box-shadow: -6px -6px 15px #222a2c;
+    cursor: pointer;
+    background-image: linear-gradient(to right, #293133, #1d2124);
+    border: 2px solid #222a2c;
+}
+
+.playlist .musics .music.play i {
+    background-image: linear-gradient(to right, #a4341d, #d45d28);
+    border: 2px solid #d45d29;
+}
