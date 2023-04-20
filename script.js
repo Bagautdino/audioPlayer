@@ -1,45 +1,39 @@
 const musics = [
     {
         id: 1,
-        name: 'Ilya',
-        src: 'musics/DJ Khaled feat. Future & Sza - Beautiful.mp3',
-        img: 'images/aivaz.jpg',
+        name: 'Frank Sinatra - My Way',
+        src: 'musics/1.mp3',
+        img: 'images/1.jpg',
     },
     {
         id: 2,
-        name: 'aivaz',
-        src: 'musics/instasamka-kak-mommy-mp3.mp3',
-        img: 'images/ilya.jpg',
+        name: 'Louis Armstrong - What the Wonderful World',
+        src: 'musics/2.mp3',
+        img: 'images/2.jpg',
     },
     {
         id: 3,
-        name: 'leo',
-        src: 'musics/ZaDengi.mp3.mp3',
-        img: 'images/vitya.jpg',
+        name: 'Ray Charles - Georgia On My Mind',
+        src: 'musics/3.mp3',
+        img: 'images/3.jpg',
     },
     {
         id: 4,
-        name: 'leo',
-        src: 'musics/ZaDengi.mp3.mp3',
-        img: 'images/vitya.jpg',
+        name: 'ABBA - The Winners Take It All',
+        src: 'musics/4.mp3',
+        img: 'images/4.jpg',
     },
     {
         id: 5,
-        name: 'leo',
-        src: 'musics/ZaDengi.mp3.mp3',
-        img: 'images/vitya.jpg',
+        name: 'Madcon - Beggin',
+        src: 'musics/5.mp3',
+        img: 'images/5.jpg',
     },
     {
         id: 6,
-        name: 'leo',
-        src: 'musics/ZaDengi.mp3.mp3',
-        img: 'images/vitya.jpg',
-    },
-    {
-        id: 7,
-        name: 'leo',
-        src: 'musics/ZaDengi.mp3.mp3',
-        img: 'images/vitya.jpg',
+        name: 'Kid Cudi - Persuit Hapinness',
+        src: 'musics/6.mp3',
+        img: 'images/6.jpg',
     },
 ]
 
@@ -49,18 +43,16 @@ var nameMusic = document.getElementById('musicName')
 
 let selectedMusic
 
-const handleClick = function (elem, name, src, img) {
+const handleClick = function(elem, name, src, img) {
     audio.src = src
     audio.play()
     selectedMusic = src
-
     var canvas = document.getElementById('canvas')
     canvas.style.display = 'block'
-
     image.style.backgroundImage = `url('${img}')`
     nameMusic.innerHTML = name
     var musicElement = document.querySelectorAll('.music')
-    for (let i = 0; i < musicElement.Length; i++) {
+    for (let i = 0; i < musicElement.length; i++) {
         musicElement[i].classList.remove('play')
         musicElement[i].children[1].classList.remove('fa-pause')
         musicElement[i].children[1].classList.add('fa-play')
@@ -101,7 +93,7 @@ const handleClick = function (elem, name, src, img) {
 
             var r = barHeight + 24 * (i / bufferLength);
             var g = 250 * (i / bufferLength)
-
+            var b = 240
             ctx.fillStyle = `rgb(${r}, ${g}, ${b})`
             ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight)
 
@@ -132,9 +124,8 @@ function next() {
 
         image.style.backgroundImage = `url(${newMusic.img})`
         nameMusic.innerHTML = newMusic.name
-  
         var musicElements = document.querySelectorAll('.music')
-        for (let i = 0; i < musicElements.Length; i++) {
+        for (let i = 0; i < musicElements.length; i++) {
             musicElements[i].classList.remove('play')
             musicElements[i].children[1].classList.remove('fa-pause')
             musicElements[i].children[1].classList.add('fa-play')
@@ -155,9 +146,8 @@ function prev() {
 
         image.style.backgroundImage = `url(${newMusic.img})`
         nameMusic.innerHTML = newMusic.name
-
-        var musicElements = document.querySelector('.music')
-        for (let i = 0; i < musicElements.Length; i++) {
+        var musicElements = document.querySelectorAll('.music')
+        for (let i = 0; i < musicElements.length; i++) {
             musicElements[i].classList.remove('play')
             musicElements[i].children[1].classList.remove('fa-pause')
             musicElements[i].children[1].classList.add('fa-play')
@@ -177,27 +167,30 @@ document.getElementById('progress').addEventListener('click', (event) => {
     audio.currentTime = current
 })
 
+let duration = document.querySelector('.duration')
+let current = document.querySelector('.current')
+let progress_bar = document.querySelector('.progress_bar')
 
 audio.addEventListener('timeupdate', (event) => {
-    let duration = event.srcElement.duration
-    let current = event.srcElement.currentTime
-    let width = (current / duration) * 100
-    document.querySelector('progress_bar').style.width = width + '%'
+    let durationValue = event.srcElement.duration
+    let currentValue = event.srcElement.currentTime
+    let width = (currentValue / durationValue) * 100
+    progress_bar.style.width = width + '%'
 
-    if (duration < 60) {
-        let durationSeconds = Math.floor(duration)
+    if (durationValue < 60) {
+        let durationSeconds = Math.floor(durationValue)
         let durationMinutes = 0
-    } else if (duration > 60) {
-        let durationMinutes = Math.floor(duration / 60)
-        let durationSeconds = Math.floor(duration % 60)
+    } else if (durationValue > 60) {
+        let durationMinutes = Math.floor(durationValue / 60)
+        let durationSeconds = Math.floor(durationValue % 60)
     }
 
-    if (current < 60) {
-        let currentSeconds = Math.floor(current)
+    if (currentValue < 60) {
+        let currentSeconds = Math.floor(currentValue)
         let currentMinutes = 0
-    } else if (current > 60) {
-        let currentMinutes = Math.floor(current / 60)
-        let currentSeconds = Math.floor(current % 60)
+    } else if (currentValue > 60) {
+        let currentMinutes = Math.floor(currentValue / 60)
+        let currentSeconds = Math.floor(currentValue % 60)
     }
 
     if (durationMinutes < 10) durationMinutes = '0' + durationMinutes
@@ -205,12 +198,12 @@ audio.addEventListener('timeupdate', (event) => {
     if (currentMinutes < 10) currentMinutes = '0' + currentMinutes
     if (currentSeconds < 10) currentSeconds = '0' + currentSeconds
 
-    document.querySelector('.current').innerHTML = currentMinutes + ':' + currentSeconds
-    document.querySelector('.duration').innerHTML = durationMinutes + ':' + durationSeconds
+    current.innerHTML = currentMinutes + ':' + currentSeconds
+    duration.innerHTML = durationMinutes + ':' + durationSeconds
 
     let musicElements = document.querySelectorAll('.music')
 
-    if (duration == current) {
+    if (durationValue == currentValue) {
         document.querySelector('.playing').classList.remove('select')
         for (let i = 0; i < musicElements.Length; i++) {
             musicElements[i].classList.remove('play')
@@ -221,10 +214,9 @@ audio.addEventListener('timeupdate', (event) => {
 })
 
 const musicTag = document.getElementById('musics')
-for (let i = 0; i < musics.Length; i++) {
+for (let i = 0; i < musics.length; i++) {
     let music = document.createElement('div')
-    musics.classList.add('music')
-
+    music.classList.add('music')
     let musicName = document.createElement('h3')
     musicName.appendChild(document.createTextNode(musics[i].name))
     let icon = document.createElement('i')

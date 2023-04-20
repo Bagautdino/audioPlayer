@@ -5,15 +5,16 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="style.css"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title>Music Player</title>
 </head>
 
 <body>
     <div class="main">
-        <canvas id="canvas" style="display: none"></canvas>
+        <canvas id="canvas" style="display: block"></canvas>
         <div class="playing">
+            <div class="img" id="img"></div>
             <audio controls style="display: none" id="audio"></audio>
             <h5>playing now</h5>
             <div class="title" id="musicName">null</div>
@@ -22,7 +23,10 @@
                 <div class="duration"></div>
             </div>
             <div class="progress" id="progress">
-                <div class="progress_bar"></div>
+                <div class="progress_bar">
+                    <div id="duration"></div>
+                    <div id="'current"></div>
+                </div>
             </div>
             <div class="buttons">
                 <div class="prev" onclick="prev()">
@@ -32,7 +36,7 @@
                     <i class="fa fa-pause"></i>
                 </div>
                 <div class="next" onclick="next()">
-                    <i class="fa fa-arrow-left"></i>
+                    <i class="fa fa-arrow-right"></i>
                 </div>
             </div>
         </div>
